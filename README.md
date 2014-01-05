@@ -13,5 +13,6 @@ Available states
 
 ``apt-cacher.server``
   Installs the server
+  
 ``apt-cacher.client``
   Sets up the device to use the apt-cacher for apt-get packages
