@@ -1,7 +1,8 @@
 apt-cacher
 ==========
 
-Formulas to install the apt-cacher package.
+Formulas to install the apt-cacher package or to configure clients to
+use a apt-cacher proxy.
 
 .. note::
 
