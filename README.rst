@@ -11,7 +11,7 @@ Formulas to install the apt-cacher package.
 
 Requirements
 ------------
-apache-formula
+`apache-formula <https://github.com/saltstack-formulas/apache-formula>`_
 
 Available states
 ================
