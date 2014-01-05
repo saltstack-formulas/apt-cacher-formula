@@ -2,7 +2,7 @@ apt-cacher-formula
 ==================
 
 Install the apt-cacher. This allows you to install either the server or the
-client version.o
+client version.
 
 Requirements
 ------------
