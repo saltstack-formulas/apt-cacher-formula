@@ -1,0 +1,23 @@
+apt_cacher:
+  host: cacher.mycompany.com
+  admin_email: admin@mycompany.com
+
+apt_cacher_ng:
+  # Setting up server_address is the minimal configuration requirement.
+  # Others options has default sane values (see map.jinja).
+  # server_address is the address access by apt-cacher-ng clients.
+  # It could be an IPv4 or a FQDN; This address MUST be resolvable by clients.
+  server_address: pkgproxy.example.com
+
+  # Server binds to this address.
+  # It could be the same value as server_address (in most cases).
+  server_bind_address: 192.168.33.10
+
+  server_port: 3142
+  cache_dir: /var/cache/apt-cacher-ng
+  log_dir: /var/log/apt-cacher-ng
+
+  # Credentials for apt-cacher-ng Web management interface.
+  # http://<server_adress>:<server_port>/acng-report.html
+  admin_account: root
+  admin_passwd: admin
