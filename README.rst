@@ -26,19 +26,19 @@ Available states
 ``apt-cacher.server``
 --------------------
 
-  Installs the apt-cacher package
+Installs the apt-cacher package
   
 ``apt-cacher.client``
 ---------------------
 
-  Sets up the system to use the apt-cacher server as the caching proxy
+Sets up the system to use the apt-cacher server as the caching proxy
 
 ``apt-cacher.ng.server``
 -------
 
-  Install and configure apt-cacher-ng
+Install and configure apt-cacher-ng
 
 ``apt-cacher.ng.client``
 ------------
 
-  Sets up the system to use the apt-cacher-ng server as the caching proxy
+Sets up the system to use the apt-cacher-ng server as the caching proxy
