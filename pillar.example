@@ -1,6 +1,10 @@
 apt_cacher:
   host: cacher.mycompany.com
   admin_email: admin@mycompany.com
+  group: www-data
+  user: www-data
+  #ip for upstream connection
+  interface: 10.10.0.1
 
 apt_cacher_ng:
   # Setting up server_address is the minimal configuration requirement.
