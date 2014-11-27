@@ -14,8 +14,8 @@ apt_cacher_ng:
   server_bind_address: 192.168.33.10
 
   server_port: 3142
-  cache_dir: /var/cache/apt-cacher-ng
-  log_dir: /var/log/apt-cacher-ng
+  server_cache_dir: /var/cache/apt-cacher-ng
+  server_log_dir: /var/log/apt-cacher-ng
 
   # Credentials for apt-cacher-ng Web management interface.
   # http://<server_adress>:<server_port>/acng-report.html
