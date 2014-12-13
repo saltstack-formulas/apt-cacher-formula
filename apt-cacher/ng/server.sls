@@ -2,11 +2,9 @@
 {% from "apt-cacher/ng/map.jinja" import apt_cacher_ng with context %}
 
 apt-cacher-ng:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ apt_cacher_ng.pkg }}
-  service:
-    - running
+  service.running:
     - name: {{ apt_cacher_ng.service }}
     - enable: True
     - watch:
@@ -17,8 +15,7 @@ apt-cacher-ng:
       - file: {{ apt_cacher_ng.server_log_dir }}
 
 {{ apt_cacher_ng.server_config }}:
-  file:
-    - managed
+  file.managed:
     - user: root
     - group: root
     - mode: '644'
@@ -26,24 +23,21 @@ apt-cacher-ng:
     - template: jinja
 
 {{ apt_cacher_ng.server_cache_dir }}:
-  file:
-    - directory
+  file.directory:
     - makedirs: True
     - user: {{ apt_cacher_ng.user }}
     - group: {{ apt_cacher_ng.group }}
     - mode: '2755'
 
 {{ apt_cacher_ng.server_log_dir }}:
-  file:
-    - directory
+  file.directory:
     - makedirs: True
     - user: {{ apt_cacher_ng.user }}
     - group: {{ apt_cacher_ng.group }}
     - mode: '2755'
 
 {{ apt_cacher_ng.credentials }}:
-  file:
-    - managed
+  file.managed:
     - user: {{ apt_cacher_ng.user }}
     - group: {{ apt_cacher_ng.group }}
     - mode: '600'
