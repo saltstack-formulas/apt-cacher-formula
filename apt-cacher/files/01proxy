@@ -1,2 +1,2 @@
-{% set apt_cacher = pillar.get('apt-cacher', {}) -%}
+{% set apt_cacher = pillar.get('apt_cacher', {}) -%}
 Acquire::http::Proxy "http://{{ apt_cacher.get('host', 'localhost') }}:3142";
