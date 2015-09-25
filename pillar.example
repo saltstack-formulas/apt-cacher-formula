@@ -20,6 +20,10 @@ apt_cacher_ng:
   server_port: 3142
   server_cache_dir: /var/cache/apt-cacher-ng
   server_log_dir: /var/log/apt-cacher-ng
+  server_extra_config: |
+    # Workaround apt-cacher-ng 500 Invalid header
+    # https://lists.alioth.debian.org/pipermail/apt-cacher-ng-users/2013-September/000082.html
+    ReuseConnections: 0
 
   # Credentials for apt-cacher-ng Web management interface.
   # http://<server_adress>:<server_port>/acng-report.html
