@@ -1,6 +1,13 @@
 {% if grains['os_family'] == 'Debian' %}
 {% from "apt-cacher/ng/map.jinja" import apt_cacher_ng with context %}
 
+{% if 'include' in apt_cacher_ng %}
+include:
+{% for include_line in apt_cacher_ng.include %}
+  - {{ include_line }}
+{% endfor %}
+{% endif %}
+
 apt-cacher-ng:
   pkg.installed:
     - name: {{ apt_cacher_ng.pkg }}
@@ -13,6 +20,12 @@ apt-cacher-ng:
       - file: {{ apt_cacher_ng.server_config }}
       - file: {{ apt_cacher_ng.server_cache_dir }}
       - file: {{ apt_cacher_ng.server_log_dir }}
+{% if 'require_in' in apt_cacher_ng %}
+    - require_in:
+{% for require_in in apt_cacher_ng.require_in %}
+      - {{ require_in }}
+{% endfor %}
+{% endif %}
 
 {{ apt_cacher_ng.server_config }}:
   file.managed:
