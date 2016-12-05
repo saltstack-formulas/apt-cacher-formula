@@ -20,12 +20,18 @@ apt-cacher-ng:
       - file: {{ apt_cacher_ng.server_config }}
       - file: {{ apt_cacher_ng.server_cache_dir }}
       - file: {{ apt_cacher_ng.server_log_dir }}
-{% if 'require_in' in apt_cacher_ng %}
+{%- if 'require' in apt_cacher_ng %}
+    - require:
+{%- for require in apt_cacher_ng.require %}
+      - {{ require }}
+{%- endfor %}
+{%- endif %}
+{%- if 'require_in' in apt_cacher_ng %}
     - require_in:
-{% for require_in in apt_cacher_ng.require_in %}
+{%- for require_in in apt_cacher_ng.require_in %}
       - {{ require_in }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
 {{ apt_cacher_ng.server_config }}:
   file.managed:
