@@ -29,3 +29,9 @@ apt_cacher_ng:
   # http://<server_adress>:<server_port>/acng-report.html
   admin_account: root
   admin_passwd: admin
+
+  # HTTPS proxy
+  # "special keyword DIRECT meaning to use no proxies"
+  #   - https://linux.die.net/man/5/apt.conf
+  # Default value ignores proxy for HTTPS connections
+  https_proxy: DIRECT

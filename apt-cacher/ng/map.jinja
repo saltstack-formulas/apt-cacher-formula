@@ -13,5 +13,6 @@
         'service': 'apt-cacher-ng',
         'credentials': '/etc/apt-cacher-ng/security.conf',
         'client_config': '/etc/apt/apt.conf.d/80proxy',
+        'https_proxy': 'DIRECT',
     },
 }, merge=salt['pillar.get']('apt_cacher_ng')) %}
