@@ -13,5 +13,7 @@
         'service': 'apt-cacher-ng',
         'credentials': '/etc/apt-cacher-ng/security.conf',
         'client_config': '/etc/apt/apt.conf.d/80proxy',
+        'admin_account': 'root',
+        'admin_passwd': 'admin'
     },
 }, merge=salt['pillar.get']('apt_cacher_ng')) %}
