@@ -35,3 +35,22 @@ apt_cacher_ng:
   #   - https://linux.die.net/man/5/apt.conf
   # Default value ignores proxy for HTTPS connections
   https_proxy: DIRECT
+
+
+##
+# require/require_in/include example
+# See https://github.com/saltstack-formulas/apt-cacher-formula/pull/12 for details
+apt_cacher_ng:
+  ...
+  include:
+    # custom states which must run before apt-cacher.ng.server
+    - repositories.sources
+    - apt-cacher-ng-fixes.server
+  require:
+    # custom states: i.e. a file which depends on the apt-cacher-ng package,
+    # but is required by the apt-cacher-ng server.
+    - 'file: /etc/apt-cacher-ng/backends_debian'
+  require_in:
+    # custom states: i.e. Debian package repos
+    - 'pkgrepo: deb jessie-backports'
+    - 'pkgrepo: deb-src jessie-backports'
