@@ -14,5 +14,6 @@
         'credentials': '/etc/apt-cacher-ng/security.conf',
         'client_config': '/etc/apt/apt.conf.d/80proxy',
         'https_proxy': 'DIRECT',
+        'local_mirrors': [],
     },
 }, merge=salt['pillar.get']('apt_cacher_ng')) %}

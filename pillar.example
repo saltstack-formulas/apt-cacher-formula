@@ -36,6 +36,12 @@ apt_cacher_ng:
   # Default value ignores proxy for HTTPS connections
   https_proxy: DIRECT
 
+  # Local mirrors don't need a proxy
+  # See https://linux.die.net/man/5/apt.conf
+  local_mirrors:
+    - 192.168.0.1
+    - host.example.test
+
 
 ##
 # require/require_in/include example
