@@ -8,6 +8,7 @@ apt_cacher_ng:
   server_log_dir: /var/log/apt-cacher-ng
   user: apt-cacher-ng
   group: apt-cacher-ng
+  root_group: root
   pkg: apt-cacher-ng
   service: apt-cacher-ng
   credentials: /etc/apt-cacher-ng/security.conf

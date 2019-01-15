@@ -1,1 +1,14 @@
 Debian: {}
+FreeBSD:
+  credentials: /usr/local/etc/apt-cacher-ng/security.conf
+  root_group: wheel
+  server_cache_dir: /var/cache/apt-cacher-ng
+  server_config: /usr/local/etc/apt-cacher-ng/zzz_acng.conf
+  server_log_dir: /var/log/apt-cacher-ng
+  service: apt_cacher_ng
+  ##
+  # We stick to the Debian user name in order to
+  # further separate apt-cacher-ng from other potentially present
+  # services running as 'proxy'.
+  #user: proxy
+  #group: proxy
