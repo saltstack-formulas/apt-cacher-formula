@@ -1,0 +1,16 @@
+apt_cacher_ng:
+  server_address: localhost
+  server_bind_address: 0.0.0.0
+  server_port: 3142
+  server_extra_config: 
+  server_config: /etc/apt-cacher-ng/zzz_acng.conf
+  server_cache_dir: /var/cache/apt-cacher-ng
+  server_log_dir: /var/log/apt-cacher-ng
+  user: apt-cacher-ng
+  group: apt-cacher-ng
+  pkg: apt-cacher-ng
+  service: apt-cacher-ng
+  credentials: /etc/apt-cacher-ng/security.conf
+  client_config: /etc/apt/apt.conf.d/80proxy
+  https_proxy: DIRECT
+  local_mirrors: []
