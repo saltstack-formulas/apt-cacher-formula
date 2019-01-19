@@ -1,4 +1,3 @@
-{% if grains['os_family'] == 'Debian' %}
 {% from "apt-cacher/ng/map.jinja" import apt_cacher_ng with context %}
 
 {%- if 'include' in apt_cacher_ng %}
@@ -6,6 +5,31 @@ include:
 {%- for include_line in apt_cacher_ng.include %}
   - {{ include_line }}
 {%- endfor %}
+{%- endif %}
+
+apt-cacher-ng-group:
+  group.present:
+    - name: {{ apt_cacher_ng.group }}
+    - require:
+      - pkg: apt-cacher-ng
+    - watch_in:
+      - service: apt-cacher-ng
+
+apt-cacher-ng-user:
+  user.present:
+    - name: {{ apt_cacher_ng.user }}
+    - require:
+      - group: apt-cacher-ng-group
+    - watch_in:
+      - service: apt-cacher-ng
+
+{%- if grains['os_family'] == 'FreeBSD' %}
+apt-cacher-ng-sysrc-user:
+  sysrc.managed:
+    - name: apt_cacher_ng_user
+    - value: "{{ apt_cacher_ng.user }}"
+    - watch_in:
+      - service: apt-cacher-ng
 {%- endif %}
 
 apt-cacher-ng:
@@ -36,7 +60,7 @@ apt-cacher-ng:
 {{ apt_cacher_ng.server_config }}:
   file.managed:
     - user: root
-    - group: root
+    - group: {{ apt_cacher_ng.root_group }}
     - mode: '644'
     - source: salt://apt-cacher/ng/files/server.conf
     - template: jinja
@@ -62,4 +86,3 @@ apt-cacher-ng:
     - mode: '600'
     - source: salt://apt-cacher/ng/files/security.conf
     - template: jinja
-{% endif %}
