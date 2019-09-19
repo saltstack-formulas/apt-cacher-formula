@@ -1,12 +1,49 @@
-{% import_yaml "apt-cacher/ng/defaults.yaml" as defaults %}
-{% import_yaml "apt-cacher/ng/osfamilymap.yaml" as osfamilymap %}
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
 
-{%- set apt_cacher_ng = salt['grains.filter_by'](
-    defaults,
-    merge=salt['grains.filter_by'](
-        osfamilymap,
-        grain='os_family',
-        merge=salt['pillar.get']('apt_cacher_ng', {}),
-    ),
-    base='apt_cacher_ng')
+{#- Get the `tplroot` from `tpldir` #}
+{%- set tplroot = tpldir.split('/')[0] %}
+{#- Start imports as #}
+{%- import_yaml tplroot ~ "/ng/defaults.yaml" as default_settings %}
+{%- import_yaml tplroot ~ "/ng/osarchmap.yaml" as osarchmap %}
+{%- import_yaml tplroot ~ "/ng/osfamilymap.yaml" as osfamilymap %}
+{%- import_yaml tplroot ~ "/ng/osmap.yaml" as osmap %}
+{%- import_yaml tplroot ~ "/ng/osfingermap.yaml" as osfingermap %}
+
+{#- Retrieve the config dict only once #}
+{%- set _config = salt['config.get']('apt_cacher_ng', default={}) %}
+
+{%- set defaults = salt['grains.filter_by'](
+      default_settings,
+      default='apt_cacher_ng',
+      merge=salt['grains.filter_by'](
+        osarchmap,
+        grain='osarch',
+        merge=salt['grains.filter_by'](
+          osfamilymap,
+          grain='os_family',
+          merge=salt['grains.filter_by'](
+            osmap,
+            grain='os',
+            merge=salt['grains.filter_by'](
+              osfingermap,
+              grain='osfinger',
+              merge=salt['grains.filter_by'](
+                _config,
+                default='lookup'
+              )
+            )
+          )
+        )
+      )
+    )
 %}
+
+{%- set config = salt['grains.filter_by'](
+      {'defaults': defaults},
+      default='defaults',
+      merge=_config
+    )
+%}
+
+{%- set apt_cacher_ng = config %}
