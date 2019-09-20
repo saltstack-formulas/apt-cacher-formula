@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 apt_cacher:
   host: cacher.mycompany.com
   admin_email: admin@mycompany.com
   group: www-data
   user: www-data
-  #ip for upstream connection
+  # ip for upstream connection
   interface: 10.10.0.1
 
 apt_cacher_ng:
@@ -42,21 +45,20 @@ apt_cacher_ng:
     - 192.168.0.1
     - host.example.test
 
-
-##
-# require/require_in/include example
-# See https://github.com/saltstack-formulas/apt-cacher-formula/pull/12 for details
-apt_cacher_ng:
-  ...
-  include:
-    # custom states which must run before apt-cacher.ng.server
-    - repositories.sources
-    - apt-cacher-ng-fixes.server
-  require:
-    # custom states: i.e. a file which depends on the apt-cacher-ng package,
-    # but is required by the apt-cacher-ng server.
-    - 'file: /etc/apt-cacher-ng/backends_debian'
-  require_in:
-    # custom states: i.e. Debian package repos
-    - 'pkgrepo: deb jessie-backports'
-    - 'pkgrepo: deb-src jessie-backports'
+# yamllint disable-line rule:comments-indentation
+  # Example for require/require_in/include
+  # See: https://github.com/saltstack-formulas/apt-cacher-formula/pull/12 for details
+  # apt_cacher_ng:
+  #   ...
+  #   include:
+  #     # custom states which must run before apt-cacher.ng.server
+  #     - repositories.sources
+  #     - apt-cacher-ng-fixes.server
+  #   require:
+  #     # custom states: i.e. a file which depends on the apt-cacher-ng package,
+  #     # but is required by the apt-cacher-ng server.
+  #     - 'file: /etc/apt-cacher-ng/backends_debian'
+  #   require_in:
+  #     # custom states: i.e. Debian package repos
+  #     - 'pkgrepo: deb jessie-backports'
+  #     - 'pkgrepo: deb-src jessie-backports'

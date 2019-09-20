@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+---
 Debian: {}
+
 FreeBSD:
   credentials: /usr/local/etc/apt-cacher-ng/security.conf
   root_group: wheel
@@ -10,5 +14,5 @@ FreeBSD:
   # We stick to the Debian user name in order to
   # further separate apt-cacher-ng from other potentially present
   # services running as 'proxy'.
-  #user: proxy
-  #group: proxy
+  # user: proxy
+  # group: proxy
