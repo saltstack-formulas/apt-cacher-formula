@@ -9,14 +9,14 @@
 {%- if grains['os_family'] == 'Debian' %}
   {%- if apt_cacher_ng.server_address %}
 
-apt-cacher-ng/config/client_config:
+apt-cacher/ng/client/config/file:
   file.managed:
     - name: {{ apt_cacher_ng.client_config }}
     - user: root
     - group: root
     - mode: '644'
     - source: {{ files_switch(['client.conf.tmpl'],
-                              lookup='apt-cacher-ng/config/client_config'
+                              lookup='apt-cacher/ng/client/config/file'
                  )
               }}
     - template: jinja

@@ -10,29 +10,29 @@
 include:
   - {{ sls_package_install }}
 
-apt-cacher-ng/group/create:
+apt-cacher/ng/server/config/group/create:
   group.present:
     - name: {{ apt_cacher_ng.group }}
 
-apt-cacher-ng/user/create:
+apt-cacher/ng/server/config/user/create:
   user.present:
     - name: {{ apt_cacher_ng.user }}
 
 {%- if grains['os_family'] == 'FreeBSD' %}
-apt-cacher-ng/user/sysrc:
+apt-cacher/ng/server/config/user/sysrc:
   sysrc.managed:
     - name: apt_cacher_ng_user
     - value: "{{ apt_cacher_ng.user }}"
 {%- endif %}
 
-apt-cacher-ng/config/server_config:
+apt-cacher/ng/server/config/file:
   file.managed:
     - name: {{ apt_cacher_ng.server_config }}
     - user: root
     - group: {{ apt_cacher_ng.root_group }}
     - mode: '644'
     - source: {{ files_switch(['server.conf.tmpl'],
-                              lookup='apt-cacher-ng/config/server_config',
+                              lookup='apt-cacher/ng/server/config/file',
                               use_subpath=True
                  )
               }}
@@ -42,7 +42,7 @@ apt-cacher-ng/config/server_config:
     - context:
         apt_cacher_ng: {{ apt_cacher_ng | json }}
 
-apt-cacher-ng/config/server_cache_dir:
+apt-cacher/ng/server/config/server_cache_dir:
   file.directory:
     - name: {{ apt_cacher_ng.server_cache_dir }}
     - makedirs: true
@@ -50,7 +50,7 @@ apt-cacher-ng/config/server_cache_dir:
     - group: {{ apt_cacher_ng.group }}
     - mode: '2755'
 
-apt-cacher-ng/config/server_log_dir:
+apt-cacher/ng/server/config/server_log_dir:
   file.directory:
     - name: {{ apt_cacher_ng.server_log_dir }}
     - makedirs: true
@@ -58,14 +58,14 @@ apt-cacher-ng/config/server_log_dir:
     - group: {{ apt_cacher_ng.group }}
     - mode: '2755'
 
-apt-cacher-ng/config/credentials:
+apt-cacher/ng/server/config/credentials:
   file.managed:
     - name: {{ apt_cacher_ng.credentials }}
     - user: {{ apt_cacher_ng.user }}
     - group: {{ apt_cacher_ng.group }}
     - mode: '600'
     - source: {{ files_switch(['security.conf.tmpl'],
-                              lookup='apt-cacher-ng/config/credentials',
+                              lookup='apt-cacher/ng/server/config/credentials',
                               use_subpath=True
                  )
               }}

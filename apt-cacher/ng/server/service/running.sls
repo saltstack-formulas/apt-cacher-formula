@@ -14,7 +14,7 @@ include:
 {%- endfor %}
 {%- endif %}
 
-apt-cacher-ng/service/running:
+apt-cacher/ng/server/service/running:
   service.running:
     - name: {{ apt_cacher_ng.service }}
     - enable: true
