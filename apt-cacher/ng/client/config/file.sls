@@ -16,7 +16,8 @@ apt-cacher/ng/client/config/file:
     - group: root
     - mode: '644'
     - source: {{ files_switch(['client.conf.tmpl'],
-                              lookup='apt-cacher/ng/client/config/file'
+                              lookup='apt-cacher/ng/client/config/file',
+                              use_subpath=True
                  )
               }}
     - template: jinja
