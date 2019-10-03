@@ -155,6 +155,7 @@ suites:
         base:
           '*':
             - apt-cacher.ng.server
+            - apt-cacher.ng.client
       pillars:
         top.sls:
           base:
