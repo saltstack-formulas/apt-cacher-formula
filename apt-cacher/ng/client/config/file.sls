@@ -15,7 +15,7 @@ apt-cacher/ng/client/config/file:
     - user: root
     - group: root
     - mode: '644'
-    - source: {{ files_switch(['client.conf.tmpl'],
+    - source: {{ files_switch(['client.conf'],
                               lookup='apt-cacher/ng/client/config/file',
                               use_subpath=True
                  )

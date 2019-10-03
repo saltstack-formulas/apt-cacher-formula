@@ -31,7 +31,7 @@ apt-cacher/ng/server/config/file:
     - user: root
     - group: {{ apt_cacher_ng.root_group }}
     - mode: '644'
-    - source: {{ files_switch(['server.conf.tmpl'],
+    - source: {{ files_switch(['server.conf'],
                               lookup='apt-cacher/ng/server/config/file',
                               use_subpath=True
                  )
@@ -64,7 +64,7 @@ apt-cacher/ng/server/config/credentials:
     - user: {{ apt_cacher_ng.user }}
     - group: {{ apt_cacher_ng.group }}
     - mode: '600'
-    - source: {{ files_switch(['security.conf.tmpl'],
+    - source: {{ files_switch(['security.conf'],
                               lookup='apt-cacher/ng/server/config/credentials',
                               use_subpath=True
                  )
