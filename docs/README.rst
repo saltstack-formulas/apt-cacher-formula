@@ -63,6 +63,21 @@ Install and configure apt-cacher-ng.
 
 Supports Debian(ish) distributions and FreeBSD.
 
+``apt-cacher.ng.server.package``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Installs the apt-cacher-ng package.
+
+``apt-cacher.ng.server.config``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Installs the apt-cacher-ng config.
+
+``apt-cacher.ng.server.service``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Manages the startup and running state of the apt-cacher-ng service.
+
 ``apt-cacher.ng.client``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
