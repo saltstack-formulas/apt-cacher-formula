@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.1](https://github.com/saltstack-formulas/apt-cacher-formula/compare/v0.7.0...v0.7.1) (2019-10-10)
+
+
+### Bug Fixes
+
+* **map.jinja:** fix `salt-lint` errors ([](https://github.com/saltstack-formulas/apt-cacher-formula/commit/abba9c1))
+
+
+### Continuous Integration
+
+* merge travis matrix, add `salt-lint` & `rubocop` to `lint` job ([](https://github.com/saltstack-formulas/apt-cacher-formula/commit/8913f37))
+
 # [0.7.0](https://github.com/saltstack-formulas/apt-cacher-formula/compare/v0.6.0...v0.7.0) (2019-10-07)
 
 
