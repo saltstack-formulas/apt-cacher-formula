@@ -2,6 +2,22 @@
 Changelog
 =========
 
+`0.7.2 <https://github.com/saltstack-formulas/apt-cacher-formula/compare/v0.7.1...v0.7.2>`_ (2019-10-12)
+------------------------------------------------------------------------------------------------------------
+
+Bug Fixes
+^^^^^^^^^
+
+
+* **rubocop:** add fixes using ``rubocop --safe-auto-correct`` (\ ` <https://github.com/saltstack-formulas/apt-cacher-formula/commit/e8c455f>`_\ )
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* merge travis matrix, add ``salt-lint`` & ``rubocop`` to ``lint`` job (\ ` <https://github.com/saltstack-formulas/apt-cacher-formula/commit/d44e3c6>`_\ )
+* **travis:** merge ``rubocop`` linter into main ``lint`` job (\ ` <https://github.com/saltstack-formulas/apt-cacher-formula/commit/22a91f7>`_\ )
+
 `0.7.1 <https://github.com/saltstack-formulas/apt-cacher-formula/compare/v0.7.0...v0.7.1>`_ (2019-10-10)
 ------------------------------------------------------------------------------------------------------------
 
