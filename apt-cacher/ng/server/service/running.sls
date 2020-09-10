@@ -18,9 +18,10 @@ apt-cacher/ng/server/service/running:
   service.running:
     - name: {{ apt_cacher_ng.service }}
     - enable: true
-    - require:
+    - watch:
       - sls: {{ sls_config_file }}
 {%- if 'require' in apt_cacher_ng %}
+    - require:
 {%- for require in apt_cacher_ng.require %}
       - {{ require }}
 {%- endfor %}
