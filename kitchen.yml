@@ -121,6 +121,7 @@ suites:
       state_top:
         base:
           '*':
+            - apt-cacher.ng._mapdata
             - apt-cacher.ng.server
             - apt-cacher.ng.client
       pillars:
