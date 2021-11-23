@@ -93,6 +93,11 @@ jobs:
     - env: INSTANCE=default-debian-9-master-py3
     - env: INSTANCE=default-ubuntu-2004-master-py3
     - env: INSTANCE=default-ubuntu-1804-master-py3
+    # - env: INSTANCE=default-debian-11-3004-0-py3
+    # - env: INSTANCE=default-debian-10-3004-0-py3
+    # - env: INSTANCE=default-debian-9-3004-0-py3
+    # - env: INSTANCE=default-ubuntu-2004-3004-0-py3
+    # - env: INSTANCE=default-ubuntu-1804-3004-0-py3
     # - env: INSTANCE=default-debian-11-3003-3-py3
     # - env: INSTANCE=default-debian-10-3003-3-py3
     # - env: INSTANCE=default-debian-9-3003-3-py3
